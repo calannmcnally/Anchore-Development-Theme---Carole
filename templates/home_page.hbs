@@ -1,7 +1,75 @@
 <!--syling as cant call custom styling via css-->
  <style>
 /*cta styling*/
+   body {
+   	background-color: white !important;
+   }
+   
+   html h2 {
+   	box-sizing: border-box;
+    color: #212529;
+    font-family: Poppins, sans-serif;
+    line-height: 24px;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    font-size: 26.6px;
+    text-align: center;
+   } 
 
+   
+   h3 {
+  	 	box-sizing: border-box;
+      font-weight: bolder;
+      font-family: Poppins, sans-serif;
+      line-height: 24px;
+      text-align: center;
+      font-size: 15px;
+   		font-weight: 500; 
+
+      :after {
+        box-sizing: border-box;
+      }
+
+      :before {
+        box-sizing: border-box;
+      }
+
+      :host {
+        display: block;
+      }
+
+   }
+   
+  .main-btn {
+   		transition: all .25s;
+      text-decoration: none;
+      border-radius: 5px;
+      box-sizing: border-box;
+      line-height: 24px;
+      font-family: Poppins, sans-serif;
+      position: relative;
+      cursor: pointer;
+      text-transform: uppercase;
+      appearance: button;
+      font-size: 16px;
+      padding: 7px 30px;
+      font-weight: 600;
+      border-style: none;
+      transition-behavior: normal;
+      background-color: #0d40b4;
+      color: #fff;
+      width: fit-content;
+      text-align: center;
+      margin-bottom: 10px;
+      margin-top: .5rem;
+   }
+
+  @media screen and (max-width: 400px) {
+   .main-btn {
+   	    padding: 7px 25px;
+   }
+   }
+   
 .btn-cta1{
   background-color: {{settings.brand_color}};
   color: {{settings.brand_text_color}};
@@ -38,6 +106,25 @@
   font-weight: 600;
   color: {{settings.brand_color_darkgrey}};
 }
+   
+   #home_page_video {
+   	min-height: 439px; 
+   }
+   
+   
+@media (max-width: 400px) {
+   
+   
+   
+   .anchore-hero-description {
+       box-sizing: border-box;
+        font-weight: bolder;
+        font-family: Poppins, sans-serif;
+        line-height: 24px !important;
+        text-align: center;
+        font-size: 15px !important;
+       }
+   }
 
 .anchore-hero-description {
   box-sizing: border-box;
@@ -46,16 +133,14 @@
  font-weight: 600;
   letter-spacing: -.01em;
   line-height: 40px;
-  font-size: 32px!important;
+  font-size: 32px;
   text-align: center;
   position: relative;
   z-index: 2;
   margin-bottom:1rem;
-
-  @media (max-width: 992px) {
-    line-height: 48px;
+	    line-height: 48px;
     font-size: 48px;
-  }
+
 
   @media (min-width: 768px) {
     text-align: left;
@@ -78,22 +163,65 @@
   background-color:{{settings.brand_color_softwhite}};
 }
 
+.video-box {
+  margin: 0 auto; 
+  padding: 20px; 
+  border: 2px solid {{settings.brand_color_slategrey}}; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 16px; 
+  box-sizing: border-box;
+  background-color: {{settings.brand_color_softwhite}}; 
+}
+
+
+/* Ensure the title is visible and styled appropriately */
+.section-header {
+  color: {{settings.brand_color}};
+  margin-bottom: 20px;
+}
+   
+.section-background {
+  background: linear-gradient(to bottom, {{settings.brand_color_softwhite}} 50%, {{settings.background_color_grey}} 50%);
+  padding: 20px; 
+}
+
+
+@media (max-width: 768px) {
+   html #home_page_video {
+   	min-height: 250px; 
+   }
+   
+  .video-box {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+}
+
+.bg-brand-grey {
+  background-color: {{settings.background_color_grey}};
+
+
  </style> 
 
-<div class="anchore-bg p-12">
-  <div class="container mx-auto flex flex-wrap items-center">
+<div class="anchore-bg p-6 md:p-12" style="border-bottom-right-radius: 100px;">
+  <div class="container mx-auto flex flex-wrap items-center px-0">
     <!-- Left Column -->
-    <div class="w-full lg:w-1/2 text-center lg:text-left px-4">
-    <h1 class="mb-4 anchore-hero-header">{{settings.hero_banner_text}}</h1>
-     <!-- <h1 class=" text-3xl mb-4">Hero Text Here</h1>-->
-      <div class="anchore-hero-description">{{settings.hero_banner_description}}</div>
-      <div class="max-w-md mx-auto lg:mx-0">
-        {{search}}
-      </div>
- 
+    <div class="w-full lg:w-1/2 text-center lg:text-left px-2 mx:px-4">
+    		<h1 class="my-5 md:mb-4 anchore-hero-header">{{settings.hero_banner_text}}</h1>
+      	<h3 class="mb-4 text-center md:text-left text-white">{{settings.hero_banner_description}}<h3>
+        <div class="max-w-md mx-auto lg:mx-0">
+          <img src="https://anchore.com/wp-content/themes/anchore/images/search-dark.svg" class="absolute z-50 mt-6 ml-4" alt="Search" width="18" height="18">
+          {{search submit=false placeholder="Search for documentation here"}}
+        </div>
+
       <div class="flex justify-center lg:justify-start space-x-4 mt-4">
-        <a href="{{settings.cta_one}}" class="btn-cta1">{{settings.cta_one_title}}</a>
-        <a href="{{settings.cta_two}}" class="btn-cta2">{{settings.cta_two_title}}</a>
+        {{#if settings.cta_one_title}}
+        <a href="{{settings.cta_one}}" class="main-btn">{{settings.cta_one_title}}</a>
+        {{/if}}
+        {{#if settings.cta_two_title}}
+        <a href="{{settings.cta_two}}" class="main-btn">{{settings.cta_two_title}}</a>
+        {{/if}}
       </div>
     </div>
  
@@ -106,25 +234,197 @@
 
 
 
-
-<div class="video-background">
-  <div class="container mx-auto px-4">
-    <div class="max-w-4xl mx-auto mb-6">
-      <h2 class="text-2xl font-semibold text-center mb-4">{{settings.homepage_video_title}}</h2>
-      <div class="relative overflow-hidden pb-56">
-        <iframe class="absolute top-0 left-0 w-full h-full" src="{{settings.homepage_video_url}}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-      </div>
+{{#if settings.homepage_video_title}}
+    
+    <div class="bg-white px-6 py-16 lg:px-8">
+  <div class="mx-auto max-w-3xl text-center">
+    <p class="text-base font-semibold text-indigo-600">Introducing</p>
+    <h1 class="text-3xl font-bold text-gray-900 sm:text-4xl text-center">{{settings.homepage_video_title}}</h1>
+    <div class="mt-8 relative overflow-hidden shadow-lg rounded-3xl mx-auto">
+      <iframe id="home_page_video" class="w-full h-full rounded-3xl" src="{{settings.homepage_video_url}}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
+      <div class="bg-opacity-75 px-4 py-2 text-white text-sm italic">
+        Faucibus commodo massa rhoncus, volutpat.
+      </div>
   </div>
 </div>
 
+<!--     
+ <div class="bg-white px-6 py-16 lg:px-8">
+  <div class="mx-auto max-w-3xl text-base leading-7 text-gray-700">
+    <p class="text-base font-semibold leading-7 text-indigo-600">Introducing</p>
+    <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{settings.homepage_video_title}}</h1>
+    <div class="relative overflow-hidden pb-56 my-5 rounded-lg shadow-lg">
+  	    <iframe class="absolute top-0 left-0 w-full h-full" src="{{settings.homepage_video_url}}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+ 
+  </div>
+</div> -->
+
+  {{/if}}
+
+
+
+
+<section class="pb-5 sm:pb-10 bg-no-repeat bg-origin-padding bg-brand-grey">
+  <div class="container mx-auto text-center category-cards py-8 px-3 sm:py-10">
+    <h2 class="section-header text-center mb-4">Custom Tiles</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-8 px-5">
+
+     {{#if settings.tile_1_title}}
+    <a href="{{settings.tile_1_url}}" class="group block bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+      {{#if settings.tile_1}}
+        <img src="{{settings.tile_1}}" alt="" class="w-full h-40 object-cover">
+      {{/if}}
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-800 group-hover:text-indigo-600">{{settings.tile_1_title}}</h3>
+        <p class="text-base text-sm mt-2">{{settings.tile_1_description}}</p>
+      </div>
+    </a>
+  {{/if}}
+
+  {{#if settings.tile_2_title}}
+    <a href="{{settings.tile_2_url}}" class="group block bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+      {{#if settings.tile_2}}
+        <img src="{{settings.tile_2}}" alt="" class="w-full h-40 object-cover">
+      {{/if}}
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-800 group-hover:text-indigo-600">{{settings.tile_2_title}}</h3>
+        <p class="text-base text-sm mt-2">{{settings.tile_2_description}}</p>
+      </div>
+    </a>
+  {{/if}}
+
+  {{#if settings.tile_3_title}}
+    <a href="{{settings.tile_3_url}}" class="group block bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+      {{#if settings.tile_3}}
+        <img src="{{settings.tile_3}}" alt="" class="w-full h-40 object-cover">
+      {{/if}}
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-800 group-hover:text-indigo-600">{{settings.tile_3_title}}</h3>
+        <p class="text-base text-sm mt-2">{{settings.tile_3_description}}</p>
+      </div>
+    </a>
+  {{/if}}
+
+  {{#if settings.tile_4_title}}
+    <a href="{{settings.tile_4_url}}" class="group block bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+      {{#if settings.tile_4}}
+        <img src="{{settings.tile_4}}" alt="" class="w-full h-40 object-cover">
+      {{/if}}
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-800 group-hover:text-indigo-600">{{settings.tile_4_title}}</h3>
+        <p class="text-base text-sm mt-2">{{settings.tile_4_description}}</p>
+      </div>
+    </a>
+  {{/if}}
+
+  {{#if settings.tile_5_title}}
+    <a href="{{settings.tile_5_url}}" class="group block bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+      {{#if settings.tile_5}}
+        <img src="{{settings.tile_5}}" alt="" class="w-full h-40 object-cover">
+      {{/if}}
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-800 group-hover:text-indigo-600">{{settings.tile_5_title}}</h3>
+        <p class="text-base text-sm mt-2">{{settings.tile_5_description}}</p>
+      </div>
+    </a>
+  {{/if}}
+
+  {{#if settings.tile_6_title}}
+    <a href="{{settings.tile_6_url}}" class="group block bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+      {{#if settings.tile_6}}
+        <img src="{{settings.tile_6}}" alt="" class="w-full h-40 object-cover">
+      {{/if}}
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-800 group-hover:text-indigo-600">{{settings.tile_6_title}}</h3>
+        <p class="text-base text-sm mt-2">{{settings.tile_6_description}}</p>
+      </div>
+    </a>
+  {{/if}}
+
+  {{#if settings.tile_7_title}}
+    <a href="{{settings.tile_7_url}}" class="group block bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+      {{#if settings.tile_7}}
+        <img src="{{settings.tile_7}}" alt="" class="w-full h-40 object-cover">
+      {{/if}}
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-800 group-hover:text-indigo-600">{{settings.tile_7_title}}</h3>
+        <p class="text-base text-sm mt-2">{{settings.tile_7_description}}</p>
+      </div>
+    </a>
+  {{/if}}
+
+  {{#if settings.tile_8_title}}
+    <a href="{{settings.tile_8_url}}" class="group block bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+      {{#if settings.tile_8}}
+        <img src="{{settings.tile_8}}" alt="" class="w-full h-40 object-cover">
+      {{/if}}
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-800 group-hover:text-indigo-600">{{settings.tile_8_title}}</h3>
+        <p class="text-base text-sm mt-2">{{settings.tile_8_description}}</p>
+      </div>
+    </a>
+  {{/if}}
+
+  {{#if settings.tile_9_title}}
+    <a href="{{settings.tile_9_url}}" class="group block bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+      {{#if settings.tile_9}}
+        <img src="{{settings.tile_9}}" alt="" class="w-full h-40 object-cover">
+      {{/if}}
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-800 group-hover:text-indigo-600">{{settings.tile_9_title}}</h3>
+        <p class="text-base text-sm mt-2">{{settings.tile_9_description}}</p>
+      </div>
+    </a>
+  {{/if}}
+
+  {{#if settings.tile_10_title}}
+    <a href="{{settings.tile_10_url}}" class="group block bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+      {{#if settings.tile_10}}
+        <img src="{{settings.tile_10}}" alt="" class="w-full h-40 object-cover">
+      {{/if}}
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-800 group-hover:text-indigo-600">{{settings.tile_10_title}}</h3>
+        <p class="text-base text-sm mt-2">{{settings.tile_10_description}}</p>
+      </div>
+    </a>
+  {{/if}}
+
+  {{#if settings.tile_11_title}}
+    <a href="{{settings.tile_11_url}}" class="group block bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+      {{#if settings.tile_11}}
+        <img src="{{settings.tile_11}}" alt="" class="w-full h-40 object-cover">
+      {{/if}}
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-800 group-hover:text-indigo-600">{{settings.tile_11_title}}</h3>
+        <p class="text-base text-sm mt-2">{{settings.tile_11_description}}</p>
+      </div>
+    </a>
+  {{/if}}
+
+  {{#if settings.tile_12_title}}
+    <a href="{{settings.tile_12_url}}" class="group block bg-white rounded-lg overflow-hidden shadow transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
+      {{#if settings.tile_12}}
+        <img src="{{settings.tile_12}}" alt="" class="w-full h-40 object-cover">
+      {{/if}}
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-800 group-hover:text-indigo-600">{{settings.tile_12_title}}</h3>
+        <p class="text-base text-sm mt-2">{{settings.tile_12_description}}</p>
+      </div>
+    </a>
+  {{/if}}
+    </div>
+  </div>
+</section>
+
 <!--NB card styling-->
-<section class="pb-5 sm:pb-10 bg-gray-200 bg-no-repeat bg-origin-padding">
-  <div class="container mx-auto text-center category-cards py-4 px-3 sm:py-10">
-    <h2 class="text-2xl font-semibold text-center mb-4"></h2>
+<section class="pb-5 sm:pb-10 bg-no-repeat bg-origin-padding">
+  <div class="container mx-auto text-center category-cards py-8 px-3 sm:py-10">
+    <h2 class="section-header text-center mb-4">Category Cards</h2>
     <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-8 px-5">
       {{#each categories}}
-        <a href="{{url}}" class="card-link transform transition duration-300 ease-in-out bg-transparent border border-gray-400 px-4 py-4 shadow-sm hover:bg-white hover:scale-105 hover:shadow-lg hover:border-transparent hover:shadow-outline hover:font-semibold hover:text-black next-card-title rounded-lg">
+        <a href="{{url}}" class="leading-6 card-link transform transition duration-300 ease-in-out bg-transparent border border-gray-400 px-4 py-4 shadow-sm hover:bg-white hover:scale-105 hover:shadow-lg hover:border-transparent hover:shadow-outline hover:font-semibold hover:text-black next-card-title rounded-lg">
           <div class="sm:mb-4">
         {{#is @index 0}}
           <img src="{{../settings.category_card_icon_1}}" class="mx-auto object-contain max-image-size" />
@@ -176,58 +476,10 @@
         {{/is}}
         <!-- Add more conditions for other indices if needed -->
       </div>
-      <span class="text-title">{{this.name}}</span>
-          <p class="card-text-description line-clamp-2">{{this.description}}</p>
+      <span class="text-lg font-semibold text-gray-800 group-hover:text-indigo-600">{{this.name}}</span>
+          <p class="text-base card-text-description line-clamp-2">{{this.description}}</p>
     </a>
   {{/each}}
 </div>
   </div>
 </section>
-<!--end of NB card styling-->
-<!--CM dynamic cards
-<div class="container mx-auto p-8">
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="categoryContainer">
-   
-  </div>
-</div>
-End of CM dynamic cards-->
-
-<!--<div class="container mx-auto p-8">
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-  <div class="flex flex-col items-center text-center p-4 shadow-lg rounded-lg">
-  <img src="https://via.placeholder.com/64/0000FF/808080?text=1" alt="Icon" class="w-16 h-16 mb-2">
-  <span>Category Text</span>
-</div>
-<div class="flex flex-col items-center text-center p-4 shadow-lg rounded-lg">
-  <img src="https://via.placeholder.com/64/FF0000/FFFFFF?text=2" alt="Icon" class="w-16 h-16 mb-2">
-  <span>Category Text</span>
-</div>
-<div class="flex flex-col items-center text-center p-4 shadow-lg rounded-lg">
-  <img src="https://via.placeholder.com/64/FFFF00/000000?text=3" alt="Icon" class="w-16 h-16 mb-2">
-  <span>Category Text</span>
-</div>
-<div class="flex flex-col items-center text-center p-4 shadow-lg rounded-lg">
-  <img src="https://via.placeholder.com/64/00FF00/000000?text=4" alt="Icon" class="w-16 h-16 mb-2">
-  <span>Category Text</span>
-</div>
-<div class="flex flex-col items-center text-center p-4 shadow-lg rounded-lg">
-  <img src="https://via.placeholder.com/64/00FFFF/000000?text=5" alt="Icon" class="w-16 h-16 mb-2">
-  <span>Category Text</span>
-</div>
-<div class="flex flex-col items-center text-center p-4 shadow-lg rounded-lg">
-  <img src="https://via.placeholder.com/64/FF00FF/FFFFFF?text=6" alt="Icon" class="w-16 h-16 mb-2">
-  <span>Category Text</span>
-</div>
-<div class="flex flex-col items-center text-center p-4 shadow-lg rounded-lg">
-  <img src="https://via.placeholder.com/64/800080/FFFFFF?text=7" alt="Icon" class="w-16 h-16 mb-2">
-  <span>Category Text</span>
-</div>
-<div class="flex flex-col items-center text-center p-4 shadow-lg rounded-lg">
-  <img src="https://via.placeholder.com/64/FFA500/FFFFFF?text=8" alt="Icon" class="w-16 h-16 mb-2">
-  <span>Category Text</span>
-</div>
-
-  </div>
-</div>-->
-
-

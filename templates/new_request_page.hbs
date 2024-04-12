@@ -1,24 +1,86 @@
-<div class="container-divider"></div>
-<div class="container">
-  <nav class="sub-nav">
-    {{breadcrumbs}}
-    <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-      </svg>
-      {{search submit=false}}
+<style>
+  #request_form footer {
+  	padding: 40px 0; 
+  } 
+  
+  #request_form .ck-voice-label {
+  	display: none; 
+  }
+  
+  #request_form .form-field {
+  	display: flex; 
+  	flex-direction: column; 
+  }  
+  
+  html #upload-dropzone {
+  	border-radius: 30px; 
+  }
+  
+  
+  #request_form label {
+  	
+    text-align: left;
+    font-family: Poppins;
+    float: left;
+    line-height: 1.2em;
+    padding: .3em 0 0;
+    color: #666;
+    display: inline-block;
+    font-size: 14px;
+    margin: 10px 0;
+    width: auto;
+    font-weight: 400;
+
+  
+
+  }
+  
+  #request_form input[type="text"], #request_form textarea, #request_form .form-field .nesty-input {
+    border-radius: 8px;
+    font-weight: inherit;
+    font-style: inherit;
+    text-align: left;
+    font-family: Poppins;
+    float: left;
+    margin: 0;
+    line-height: 1.2em;
+    box-sizing: border-box;
+    color: #333;
+    height: auto;
+    font-size: 18px;
+    padding: 10px;
+    border-color: #d9d9d9;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: none;
+    width: 100%;
+    background-color: #f5f8fa;
+
+    @media only screen and (max-width: 480px) {
+      line-height: 1.5em;
+      clear: left;
+    }
+
+    :focus {
+      outline: 0;
+    }
+
+    :placeholder {
+      line-height: 1.2;
+      color: #333742;
+      font-family: Poppins;
+      font-size: 18px;
+    }
+
+  }
+</style>
+
+<div class="border-t border-gray-200"></div>
+<div id="request_form" class="container mx-auto px-6 py-10">
+	<div id="main-content" class="bg-white max-w-5xl mx-auto py-5 px-4 rounded-xl">
+    <h1 class="text-2xl font-semibold text-black mb-5">
+      {{t 'submit_a_request'}}
+    </h1>
+      {{request_form wysiwyg=true}}
     </div>
-  </nav>
-
-  <h1>
-    {{t 'submit_a_request'}}
-    <span class="follow-up-hint">
-      {{follow_up}}
-    </span>
-  </h1>
-
-  <div id="main-content" class="form">
-    {{request_form wysiwyg=true}}
-  </div>
 </div>

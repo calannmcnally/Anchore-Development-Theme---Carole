@@ -23,6 +23,8 @@
     const menuButton = document.querySelector(".header .menu-button-mobile");
     const menuList = document.querySelector("#user-nav-mobile");
 
+    if(!menuButton) return
+    
     menuButton.addEventListener("click", (event) => {
       event.stopPropagation();
       toggleNavigation(menuButton, menuList);
@@ -581,7 +583,7 @@ const categoryData = [
   function createCategoryCards() {
     const container = document.getElementById("categoryContainer");
     if (!container) {
-      console.error("Container not found!");
+      
       return; 
     }
 
